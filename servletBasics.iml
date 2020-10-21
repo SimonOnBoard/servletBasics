@@ -23,5 +23,9 @@
     <orderEntry type="library" name="javax.servlet-api-3.1.0" level="project" />
     <orderEntry type="library" name="freemarker-2.3.30" level="project" />
     <orderEntry type="library" name="postgresql-42.2.9.jre6" level="project" />
+    <orderEntry type="library" name="jackson-databind-2.11.2" level="project" />
+    <orderEntry type="library" name="lombok-1.18.12" level="project" />
+    <orderEntry type="library" name="jackson-core-2.11.2" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.11.2" level="project" />
   </component>
 </module>

@@ -3,11 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>${name}!</title>
+    <title>Profile view page</title>
 </head>
 <body>
-<h2>Hello ${name}! U have suc login </h2>
 
-
+<img src="${user.getImagePath()}" height="500" width="500"/>
 </body>
 </html>

@@ -69,9 +69,32 @@ public class StudentsDaoImpl implements StudentsDao {
         }
     }
 
+    //language=sql
+    public static final String SQLUpdate = "UPDATE students SET name = ?, age = ?, course = ?, surname = ?, deducted = ?, filepath = ?  WHERE id = ?";
+
     @Override
     public void update(Student model) {
+        try (PreparedStatement statement = connection.prepareStatement(SQLUpdate)) {
+            //На место соответвующих вопросительных знаков уставнавливаем параметры модели, которую мы хотим обновить
+            statement.setString(1, model.getName());
+            statement.setInt(2, model.getAge());
+            statement.setInt(3, model.getCourse());
+            statement.setString(4, model.getSurname());
+            statement.setBoolean(5, model.isDeducted());
+            statement.setString(6, model.getImagePath());
+            statement.setLong(7, model.getId());
+            //Выполняем запрос и сохраняем колличество изменённых строк
+            int updRows = statement.executeUpdate();
 
+            if (updRows == 0) {
+                //Если ничего не было изменено, значит возникла ошибка
+                //Возбуждаем соответсвующее исключений
+                throw new SQLException();
+            }
+        } catch (SQLException e) {
+            //Если обноление провалилось, обернём пойманное исключение в непроверяемое и пробросим дальше(best-practise)
+            throw new IllegalStateException(e);
+        }
     }
 
     @Override
@@ -136,8 +159,9 @@ public class StudentsDaoImpl implements StudentsDao {
         //Получаем возраст из соответветсвующей колонки
         Integer age = row.getObject("age", Integer.class);
         Integer course = row.getObject("course", Integer.class);
+        String filePath = row.getString("filepath");
         //создаём и возвращаем объект User из полученных данных
-        return new Student(id, age, course, firstName, lastName, deducted);
+        return new Student(id, age, course, firstName, lastName, deducted,filePath);
     };
 
 }

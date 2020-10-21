@@ -1,5 +1,7 @@
 package models;
 
+import dtos.StudentFormData;
+
 public class Student {
     private Long id;
     private int age;
@@ -7,6 +9,7 @@ public class Student {
     private String name;
     private String surname;
     private boolean deducted;
+    private String imagePath;
 
     public Student(Long id, int age, int course, String name, String surname, boolean deducted) {
         this.id = id;
@@ -15,6 +18,21 @@ public class Student {
         this.name = name;
         this.surname = surname;
         this.deducted = deducted;
+    }
+
+    public Student(Long id, int age, int course, String name, String surname, boolean deducted, String imagePath) {
+        this.id = id;
+        this.age = age;
+        this.course = course;
+        this.name = name;
+        this.surname = surname;
+        this.deducted = deducted;
+        this.imagePath = imagePath;
+    }
+
+    public static Student from(StudentFormData studentFormData) {
+        return new Student(studentFormData.getAge(), studentFormData.getCourse(), studentFormData.getName(), studentFormData.getSurname(),
+                studentFormData.isDeducted());
     }
 
     @Override
@@ -83,5 +101,13 @@ public class Student {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

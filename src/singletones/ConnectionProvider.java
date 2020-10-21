@@ -18,6 +18,11 @@ public class ConnectionProvider {
 
     public static Connection getConnection(){
         try {
+            Class.forName(driverClassName);
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException(e);
+        }
+        try {
             return DriverManager.getConnection(url, userName, password);
         } catch (SQLException e) {
             throw new IllegalStateException(e);

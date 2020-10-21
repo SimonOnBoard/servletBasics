@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="myapp">
+  <artifact type="exploded-war" name="myapp">
     <output-path>$PROJECT_DIR$/out/artifacts/myapp</output-path>
-    <root id="archive" name="myapp.war">
+    <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="servletBasics" />
@@ -10,6 +10,10 @@
           <element id="library" level="project" name="javax.servlet-api-3.1.0" />
           <element id="library" level="project" name="freemarker-2.3.30" />
           <element id="library" level="project" name="postgresql-42.2.9.jre6" />
+          <element id="library" level="project" name="jackson-databind-2.11.2" />
+          <element id="library" level="project" name="lombok-1.18.12" />
+          <element id="library" level="project" name="jackson-core-2.11.2" />
+          <element id="library" level="project" name="jackson-annotations-2.11.2" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="servletBasics/web/Web" />
